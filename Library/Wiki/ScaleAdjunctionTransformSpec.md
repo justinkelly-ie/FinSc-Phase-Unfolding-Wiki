@@ -30,27 +30,27 @@ import Wiki.Generators
 
 %default total
 
-||| Property 1: ScaleFunctor Composition Associativity
+||| Property 1: ScaleTransition Composition Associativity
 public export
 prop_scaleFunctorCompositionAssociativity : Stage0.BoxInt.BoxInt -> Bool
 prop_scaleFunctorCompositionAssociativity v =
-  let f : ScaleFunctor HadronLevel HadronLevel Integer Integer
-      f = identityScaleFunctor
-      g : ScaleFunctor HadronLevel HadronLevel Integer Integer
-      g = identityScaleFunctor
-      h : ScaleFunctor HadronLevel HadronLevel Integer Integer
-      h = identityScaleFunctor
-      fg_h = composeScaleFunctors (composeScaleFunctors f g) h
-      f_gh = composeScaleFunctors f (composeScaleFunctors g h)
+  let f : ScaleTransition HadronLevel HadronLevel Integer Integer
+      f = identityScaleTransition
+      g : ScaleTransition HadronLevel HadronLevel Integer Integer
+      g = identityScaleTransition
+      h : ScaleTransition HadronLevel HadronLevel Integer Integer
+      h = identityScaleTransition
+      fg_h = composeScaleTransitions (composeScaleTransitions f g) h
+      f_gh = composeScaleTransitions f (composeScaleTransitions g h)
   in (transform fg_h).fraction == (transform f_gh).fraction
 
-||| Property 2: ScaleFunctor Identity Neutrality
+||| Property 2: ScaleTransition Identity Neutrality
 public export
 prop_scaleFunctorIdentityNeutrality : Stage0.BoxInt.BoxInt -> Bool
 prop_scaleFunctorIdentityNeutrality v =
-  let f : ScaleFunctor HadronLevel HadronLevel Integer Integer
-      f = identityScaleFunctor
-      idF = composeScaleFunctors f identityScaleFunctor
+  let f : ScaleTransition HadronLevel HadronLevel Integer Integer
+      f = identityScaleTransition
+      idF = composeScaleTransitions f identityScaleTransition
   in (transform idF).fraction == (transform f).fraction
 
 ||| Property 3: Monoid Multiset Adjunction Scale Invariant (f_push . f_pull preservation)
@@ -63,17 +63,17 @@ prop_scaleMultisetAdjunctionPreservation val =
       pulled = fiberPullback (\u => [u]) pushed
   in multiplicityAll pulled == multiplicityAll xs
 
-||| Property 4: Composite ScaleFunctor Multiset Adjunction Pushforward/Pullback Invariance
+||| Property 4: Composite ScaleTransition Multiset Adjunction Pushforward/Pullback Invariance
 public export
 prop_scaleFunctorMultisetComposition : Stage0.BoxInt.BoxInt -> Bool
 prop_scaleFunctorMultisetComposition val =
   let xs : Multiset Integer Integer
       xs = AddM (unwrapBox val) 1 ZeroM
-      f : ScaleFunctor HadronLevel HadronLevel Integer Integer
-      f = identityScaleFunctor
-      g : ScaleFunctor HadronLevel HadronLevel Integer Integer
-      g = identityScaleFunctor
-      compSF = composeScaleFunctors f g
+      f : ScaleTransition HadronLevel HadronLevel Integer Integer
+      f = identityScaleTransition
+      g : ScaleTransition HadronLevel HadronLevel Integer Integer
+      g = identityScaleTransition
+      compSF = composeScaleTransitions f g
       pushed = fiberPushforward id xs
       pulled = fiberPullback (\u => [u]) pushed
   in multiplicityAll pulled == multiplicityAll xs

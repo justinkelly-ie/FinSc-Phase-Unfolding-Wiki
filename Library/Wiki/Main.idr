@@ -53,7 +53,7 @@ main = do
   printTestResult "UniverseState Capacity & Law Monoid (QuickCheck)" p4
 
   p5 <- auditScaleMultisetTransformProof
-  printTestResult "ScaleFunctor & Multiset Adjunction Dualities (QuickCheck)" p5
+  printTestResult "ScaleTransition & Multiset Adjunction Dualities (QuickCheck)" p5
 
   p6 <- auditTwelveLevelTypeTheoryStagingProof
   printTestResult "Generic 12LTT Staging & Goh Factorization (Properties)" p6
