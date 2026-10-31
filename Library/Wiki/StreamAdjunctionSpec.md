@@ -151,6 +151,16 @@ prop_stageGeometryMetricRouterProof =
      (autoRouted.sector == EllipticSector) &&
      (countFactors pushedStream == 15)
 
+||| Property 13: Cyclotomic Multiset Hylomorphism Triad Duality & Token Conservation
+public export
+prop_cyclotomicMultisetHyloProof : Bool
+prop_cyclotomicMultisetHyloProof =
+  prop_totientEqualsSupportSize 6 &&
+  prop_totientEqualsSupportSize 210 &&
+  auditTotientConservationProof 6 &&
+  auditTotientConservationProof 12 &&
+  auditTotientConservationProof 210
+
 ||| Direct Suite Execution for Stream Adjunction Specification
 public export
 auditStreamAdjunctionProof : IO Bool
@@ -167,5 +177,6 @@ auditStreamAdjunctionProof = do
   let p10 = prop_wildbergerSupportPartitionProof
   let p11 = prop_chromogeometricBudgetConservationProof
   let p12 = prop_stageGeometryMetricRouterProof
-  pure (p1 && p2 && p3 && p4 && p5 && p6 && p7 && p8 && p9 && p10 && p11 && p12)
+  let p13 = prop_cyclotomicMultisetHyloProof
+  pure (p1 && p2 && p3 && p4 && p5 && p6 && p7 && p8 && p9 && p10 && p11 && p12 && p13)
 ```
