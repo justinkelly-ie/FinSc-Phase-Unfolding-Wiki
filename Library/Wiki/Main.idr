@@ -16,6 +16,7 @@ import Wiki.TwelveLevelTypeTheoryStagingSpec
 import Wiki.QuadStreamPassbandSpec
 import Wiki.CosmicEpochSubstrateSpec
 import Wiki.QuadStreamGohAdjunctionSpec
+import Wiki.CyclotomicSpreadHyloSpec
 import Stage1.Reflect.InvariantAuditor
 import Stage1.Goh.SpreadFactorization
 
@@ -67,6 +68,9 @@ main = do
   p9 <- auditQuadStreamGohAdjunctionProof
   printTestResult "Goh Prime Factor Adjunction (L_p ⊣ R_p) & Quad-Stream Duality (Properties)" p9
 
+  p10 <- auditCyclotomicSpreadHyloProof
+  printTestResult "Cyclotomic Spread Hylomorphism & StreamPolynumber (Properties)" p10
+
   putStrLn "\n--------------------------------------------------------"
   putStrLn "  🔍 STATIC PROOF WITNESS AUDITS 🔍  "
   putStrLn "--------------------------------------------------------"
@@ -88,7 +92,7 @@ main = do
   printTestResult "Goh Maxel 1D & 2D Support Commutation (p=2->1, p=3->3, p=5->7)" Stage1.Reflect.InvariantAuditor.auditGohMaxelSupportCommutationProof
   printTestResult "Cigler-Herbig Spread Polynomial Factorization (Z_n, Psi_d, Fibonacci)" auditCiglerHerbigSpreadFactorizationProof
 
-  let allQc = p0 && p1 && p2 && p3 && p4 && p5 && p6 && p7 && p8 && p9
+  let allQc = p0 && p1 && p2 && p3 && p4 && p5 && p6 && p7 && p8 && p9 && p10
   let allAudits = auditMultisetTreeLookupProof && auditMultisetTreeTokenSumProof &&
                   auditBoxSpecTreeOrderingProof && auditTreeUniverseScalingProof &&
                   auditContinuedFractionProof && auditSternBrocotProof &&

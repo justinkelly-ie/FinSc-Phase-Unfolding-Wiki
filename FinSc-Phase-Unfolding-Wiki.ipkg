@@ -18,6 +18,7 @@ modules = Wiki.Foundations.Multiset_Tree_Architecture,
           Wiki.QuadStreamPassbandSpec,
           Wiki.CosmicEpochSubstrateSpec,
           Wiki.QuadStreamGohAdjunctionSpec,
+          Wiki.CyclotomicSpreadHyloSpec,
           Wiki.UnixelFractionSpec
 
 main = Wiki.Main
