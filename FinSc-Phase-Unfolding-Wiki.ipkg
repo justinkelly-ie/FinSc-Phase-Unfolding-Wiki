@@ -19,7 +19,8 @@ modules = Wiki.Foundations.Multiset_Tree_Architecture,
           Wiki.CosmicEpochSubstrateSpec,
           Wiki.QuadStreamGohAdjunctionSpec,
           Wiki.CyclotomicSpreadHyloSpec,
-          Wiki.UnixelFractionSpec
+          Wiki.UnixelFractionSpec,
+          Wiki.GohDivisorScaleLadderSpec
 
 main = Wiki.Main
 executable = phase-unfolding-wiki
