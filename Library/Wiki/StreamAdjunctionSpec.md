@@ -129,13 +129,13 @@ public export
 prop_wildbergerSupportPartitionProof : Bool
 prop_wildbergerSupportPartitionProof = auditWildbergerSupportPartitionProof
 
-||| Property 11: Chromogeometric Sector Budget Conservation (b + r + g == N)
+||| Property 11: Chromogeometric Sector Budget Conservation (b + r + g + s == N)
 public export
 prop_chromogeometricBudgetConservationProof : Bool
 prop_chromogeometricBudgetConservationProof =
-  prop_chromogeometricBudgetConservation 6 &&
-  prop_chromogeometricBudgetConservation 12 &&
-  prop_chromogeometricBudgetConservation 18
+  prop_quadSectorBudgetConservation 6 &&
+  prop_quadSectorBudgetConservation 12 &&
+  prop_quadSectorBudgetConservation 18
 
 ||| Property 12: 4Geometries Stage-Indexed Metric Router Dispatch & Prime Adjunction Stream Transducer Audit
 public export

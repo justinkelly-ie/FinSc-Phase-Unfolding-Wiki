@@ -41,7 +41,7 @@ public export
 Arbitrary Vexel where
   arbitrary = do
     ts <- arbitrary {a = List (Unixel, BoxInt)}
-    pure (mkVexel (take 5 ts))
+    pure (foldl (\acc, (u, w) => acc <+> singletonCell u w) emptyVexel (take 5 ts))
   coarbitrary v gen =
     let t = map (\(u, w) => (unwrapUnixel u, unwrapBox w)) (vexelTerms v)
     in coarbitrary t gen
@@ -50,7 +50,7 @@ public export
 Arbitrary Maxel where
   arbitrary = do
     ps <- arbitrary {a = List (Pixel, BoxInt)}
-    pure (mkMaxel (take 5 ps))
+    pure (foldl (\acc, (px, w) => acc <+> singletonCell px w) emptyMaxel (take 5 ps))
   coarbitrary m gen =
     let t = map (\(px, w) => (pixelRow px, pixelCol px, unwrapBox w)) (maxelPixels m)
     in coarbitrary t gen

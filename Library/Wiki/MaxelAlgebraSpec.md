@@ -30,7 +30,7 @@ prop_actMaxelDistributive m v1 v2 =
   let lhs = canonicalizeVexel (actMaxelVexel m (addVexel v1 v2))
       rhs = canonicalizeVexel (addVexel (actMaxelVexel m v1) (actMaxelVexel m v2))
       diff = canonicalizeVexel (subVexel lhs rhs)
-  in diff == MkVexel []
+  in diff == emptyVexel
 
 ||| 2. Maxel Scalar Multiplicity Linearity: alpha * (M . v) == M . (alpha * v)
 public export
@@ -39,14 +39,14 @@ prop_actMaxelScalarLinear s m v =
   let lhs = canonicalizeVexel (scaleVexel s (actMaxelVexel m v))
       rhs = canonicalizeVexel (actMaxelVexel m (scaleVexel s v))
       diff = canonicalizeVexel (subVexel lhs rhs)
-  in diff == MkVexel []
+  in diff == emptyVexel
 
 ||| 3. Grassmann Wedge Nilpotency: v ^ v == 0
 public export
 prop_wedgeNilpotent : Vexel -> Bool
 prop_wedgeNilpotent v =
   let w = wedgeVexel v v
-  in w == MkMaxel []
+  in w == emptyMaxel
 
 ||| 4. Multiset Scale Adjunction Sub-Lattice Subsumption: M <= f^*(f_*(M))
 public export
@@ -62,7 +62,7 @@ prop_actTransformVexelDistributive t v1 v2 =
   let lhs = canonicalizeVexel (actTransformVexel t (addVexel v1 v2))
       rhs = canonicalizeVexel (addVexel (actTransformVexel t v1) (actTransformVexel t v2))
       diff = canonicalizeVexel (subVexel lhs rhs)
-  in diff == MkVexel []
+  in diff == emptyVexel
 
 ||| 6. Maxel <-> MaxelTransform Roundtrip Converter: transformToMaxel (maxelToTransform sec frac m) == canonicalizeMaxel m
 public export
